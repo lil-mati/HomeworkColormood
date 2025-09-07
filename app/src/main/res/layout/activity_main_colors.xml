@@ -5,22 +5,37 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background_gradient"
+    android:background="@drawable/background"
     tools:context=".Main_ColorsList_Activity">
 
     <ListView
         android:id="@+id/color_view"
-        android:layout_width="350dp"
-        android:layout_height="400dp"
-        android:layout_marginBottom="68dp"
+        android:layout_width="361dp"
+        android:layout_height="488dp"
         android:clipToPadding="false"
         android:divider="@android:color/transparent"
 
         android:dividerHeight="8dp"
         android:paddingBottom="16dp"
+        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.491"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/divider"
+        app:layout_constraintVertical_bias="0.578"
+        tools:visibility="visible">
+
+    </ListView>
+
+    <View
+        android:id="@+id/divider"
+        android:layout_width="wrap_content"
+        android:layout_height="1dp"
+        android:layout_marginTop="232dp"
+        android:background="?attr/colorOutline"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
