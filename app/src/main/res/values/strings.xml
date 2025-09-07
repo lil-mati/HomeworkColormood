@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">HomeworkColormood</string>
+    <string name="qu_te_hizo_sentir_as">¿Qué te hizo sentir así?</string>
+    <string name="hoy_12_de_octubre">Hoy, 12 de Octubre</string>
+    <string name="cu_ntame_m_s">Cuéntame más...</string>
+    <string name="emoci_n_sentimiento">Emoción/Sentimiento</string>
+    <string name="c_mara">Cámara</string>
+    <string name="galer_a">Galería</string>
+    <string name="agrega_una_foto_opcional">Agrega una foto (opcional)</string>
+    <string name="omitir">Omitir</string>
+    <string name="guardar_mi_d_a">Guardar Mi Día</string>
 </resources>
