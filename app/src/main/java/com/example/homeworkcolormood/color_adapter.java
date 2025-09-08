@@ -1,14 +1,20 @@
 package com.example.homeworkcolormood;
 
-import android.content.Context; // Importar Context
-import android.view.LayoutInflater; // Importar LayoutInflater
+import android.content.Context;
+import android.graphics.Color;
+import android.graphics.drawable.GradientDrawable;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.TextView; // Importar TextView
-import java.util.ArrayList; // Importar ArrayList
+import android.widget.ImageView;
+import android.widget.TextView;
 
-public class color_adapter extends BaseAdapter{
+import java.util.ArrayList;
+import java.util.Locale;
+
+public class color_adapter extends BaseAdapter {
+
     private final Context context;
     private final int layoutResource;
     private final ArrayList<String> colores;
@@ -19,49 +25,60 @@ public class color_adapter extends BaseAdapter{
         this.colores = colores;
     }
 
-    @Override
-    public int getCount() {
-        if (this.colores != null) {
-            return this.colores.size();
-        }
-        return 0;
-    }
+    @Override public int getCount() { return colores.size(); }
+    @Override public Object getItem(int position) { return colores.get(position); }
+    @Override public long getItemId(int position) { return position; }
 
-    @Override
-    public Object getItem(int position) {
-        if (this.colores != null) {
-            return this.colores.get(position);
-        }
-        return null;
-    }
-
-    @Override
-    public long getItemId(int position) {
-        return position;
+    static class ViewHolder {
+        ImageView imgColor;
+        TextView txtColor;
     }
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        View v = convertView;
-
-        if (v == null) {
-            LayoutInflater inflater = LayoutInflater.from(this.context);
-            v = inflater.inflate(R.layout.list_colormood, parent, false);
-        }
-
-        String colorActual = null;
-        if (this.colores != null && position < this.colores.size()) {
-            colorActual = colores.get(position);
-        }
-
-        TextView txt_color = v.findViewById(R.id.txt_color);
-
-        if (colorActual != null) {
-            txt_color.setText(colorActual);
+        ViewHolder h;
+        if (convertView == null) {
+            convertView = LayoutInflater.from(context).inflate(layoutResource, parent, false);
+            h = new ViewHolder();
+            h.imgColor = convertView.findViewById(R.id.img_color);
+            h.txtColor = convertView.findViewById(R.id.txt_color);
+            convertView.setTag(h);
         } else {
-            txt_color.setText("");
+            h = (ViewHolder) convertView.getTag();
         }
 
-        return v;
+        String nombre = colores.get(position);
+        h.txtColor.setText(nombre);
+
+        // Crear círculo pintado
+        GradientDrawable circle = new GradientDrawable();
+        circle.setShape(GradientDrawable.OVAL);
+        circle.setColor(colorForName(nombre));
+        circle.setSize(dp(56), dp(56));         // tamaño del círculo
+        circle.setStroke(dp(1), 0x66FFFFFF);    // borde suave opcional
+        h.imgColor.setImageDrawable(circle);
+
+        return convertView;
+    }
+
+    private int dp(int dp) {
+        float d = context.getResources().getDisplayMetrics().density;
+        return Math.round(dp * d);
+    }
+
+    private int colorForName(String name) {
+        String n = name == null ? "" : name.trim().toLowerCase(Locale.ROOT);
+        switch (n) {
+            case "rojo":      return Color.parseColor("#E53935");
+            case "amarillo":  return Color.parseColor("#FDD835");
+            case "verde":     return Color.parseColor("#43A047");
+            case "azul":      return Color.parseColor("#1E88E5");
+            case "morado":
+            case "violeta":   return Color.parseColor("#8E24AA");
+            case "naranja":   return Color.parseColor("#FB8C00");
+
+            default:          return Color.parseColor("#9E9E9E"); // fallback
+        }
     }
 }
+
