@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.HomeworkColormood">
         <activity
+            android:name=".FormularioActivity"
+            android:exported="false" />
+        <activity
             android:name=".DetallesActivity"
             android:exported="false" />
         <activity
