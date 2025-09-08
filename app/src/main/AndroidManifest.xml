@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.HomeworkColormood">
         <activity
+            android:name=".ActivityProfile"
+            android:exported="false" />
+        <activity
             android:name=".Main_ColorsList_Activity"
             android:exported="true">
             <intent-filter>

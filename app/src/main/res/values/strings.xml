@@ -9,4 +9,7 @@
     <string name="agrega_una_foto_opcional">Agrega una foto (opcional)</string>
     <string name="omitir">Omitir</string>
     <string name="guardar_mi_d_a">Guardar Mi Día</string>
+    <string name="nombre">Nombre</string>
+    <string name="_00_a_os">00 Años</string>
+    <string name="quitar">quitar</string>
 </resources>
