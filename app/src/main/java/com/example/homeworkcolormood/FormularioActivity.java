@@ -22,7 +22,7 @@ public class FormularioActivity extends AppCompatActivity {
 
         EditText nombre = findViewById(R.id.editNombre);
         EditText edad = findViewById(R.id.editEdad);
-        EditText color = findViewById(R.id.editColor);
+        EditText colorin = findViewById(R.id.editColor);
         EditText emocion = findViewById(R.id.editEmocion);
         Button cambio = findViewById(R.id.cambio);
 
@@ -31,15 +31,15 @@ public class FormularioActivity extends AppCompatActivity {
             public void onClick(View v) {
                 String name = nombre.getText().toString();
                 String age = edad.getText().toString();
-                String colorin = color.getText().toString();
-                String emociones = emocion.getText().toString();
+                String color = colorin.getText().toString();
+                String emotion = emocion.getText().toString();
 
                 Intent i = new Intent(FormularioActivity.this, ActivityProfile.class);
 
-                i.putExtra("nombre", name);
-                i.putExtra("edad", age);
-                i.putExtra("color", colorin);
-                i.putExtra("emocion", emociones);
+                i.putExtra("name", name);
+                i.putExtra("age", age);
+                i.putExtra("color", color);
+                i.putExtra("emotion", emotion);
 
                 startActivity(i);
             }
