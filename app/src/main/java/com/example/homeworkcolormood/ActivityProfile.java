@@ -38,6 +38,7 @@ public class ActivityProfile extends AppCompatActivity {
             startActivity(x);
         });
 
+        mostrarCambios();
 
     }
 

@@ -1,6 +1,9 @@
 package com.example.homeworkcolormood;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView; // Importar TextView
 import androidx.activity.EdgeToEdge;
@@ -15,6 +18,7 @@ public class Main_ColorsList_Activity extends AppCompatActivity {
 
     private ListView color_view;
     private TextView titleTextView; // Añadir el TextView para el título
+    private Button userIconButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,8 +32,8 @@ public class Main_ColorsList_Activity extends AppCompatActivity {
             return insets;
         });
 
-        // Inicializar el TextView del título
         titleTextView = findViewById(R.id.title_textview);
+        userIconButton = findViewById(R.id.user_icon);
 
         // Cargar los mensajes de bienvenida y seleccionar uno aleatoriamente
         String[] welcomeMessages = getResources().getStringArray(R.array.welcome_messages);
@@ -51,5 +55,14 @@ public class Main_ColorsList_Activity extends AppCompatActivity {
 
         color_adapter adapter = new color_adapter(this, R.layout.list_colormood, colores);
         color_view.setAdapter(adapter);
+
+        // Configurar el OnClickListener para el botón de usuario
+        userIconButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Main_ColorsList_Activity.this, ActivityProfile.class);
+                startActivity(intent);
+            }
+        });
     }
 }

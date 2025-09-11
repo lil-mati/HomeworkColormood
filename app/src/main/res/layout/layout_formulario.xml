@@ -6,80 +6,73 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background"
+    android:padding="16dp"
     tools:context=".FormularioActivity">
 
-    <LinearLayout
-        android:layout_width="408dp"
-        android:layout_height="480dp"
-        android:orientation="vertical"
-        tools:layout_editor_absoluteX="1dp"
-        tools:layout_editor_absoluteY="1dp"
-        tools:ignore="MissingConstraints">
+    <EditText
+        android:id="@+id/editNombre"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:ems="10"
+        android:hint="Nombre"
+        android:inputType="text"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"/>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="114dp"
-            android:orientation="horizontal">
+    <EditText
+        android:id="@+id/editEdad"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:ems="10"
+        android:hint="Edad"
+        android:inputType="number"
+        app:layout_constraintTop_toBottomOf="@id/editNombre"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"/>
 
-            <EditText
-                android:id="@+id/editNombre"
-                android:layout_width="match_parent"
-                android:layout_height="116dp"
-                android:ems="10"
-                android:inputType="text"
-                android:text="Nombre" />
+    <EditText
+        android:id="@+id/editColor"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:ems="10"
+        android:hint="Color favorito"
+        android:inputType="text"
+        app:layout_constraintTop_toBottomOf="@id/editEdad"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"/>
 
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="118dp"
-            android:orientation="vertical">
-
-            <EditText
-                android:id="@+id/editEdad"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:ems="10"
-                android:inputType="number"
-                android:text="Edad" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="122dp"
-            android:orientation="vertical">
-
-            <EditText
-                android:id="@+id/editColor"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:ems="10"
-                android:inputType="text"
-                android:text="Color favorito" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="125dp"
-            android:orientation="vertical">
-
-            <EditText
-                android:id="@+id/editEmocion"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:ems="10"
-                android:inputType="text"
-                android:text="Emoción Caracteristica" />
-        </LinearLayout>
-
-    </LinearLayout>
+    <EditText
+        android:id="@+id/editEmocion"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:ems="10"
+        android:hint="Emoción Característica"
+        android:inputType="text"
+        app:layout_constraintTop_toBottomOf="@id/editColor"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"/>
 
     <Button
         android:id="@+id/cambio"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
         android:text="Cambiar"
-        tools:layout_editor_absoluteX="154dp"
-        tools:layout_editor_absoluteY="584dp" />
+        app:layout_constraintTop_toBottomOf="@id/editEmocion"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
