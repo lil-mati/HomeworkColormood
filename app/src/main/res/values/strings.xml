@@ -12,4 +12,12 @@
     <string name="nombre">Nombre</string>
     <string name="_00_a_os">00 Años</string>
     <string name="quitar">quitar</string>
+    <string name="welcome_title">Bienvenido</string>
+    <string-array name="welcome_messages">
+        <item>¡Hola! ¿Qué tal tu día?</item>
+        <item>Bienvenido/a de nuevo.</item>
+        <item>Explora y diviértete.</item>
+        <item>¿Listo/a para elegir?</item>
+        <item>Que tengas un día colorido.</item>
+    </string-array>
 </resources>
