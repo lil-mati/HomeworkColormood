@@ -35,8 +35,9 @@
     <ListView
         android:id="@+id/color_view"
         android:layout_width="0dp"
-        android:layout_height="580dp"
+        android:layout_height="0dp"
         android:layout_marginTop="32dp"
+        android:layout_marginBottom="16dp"
         android:clipToPadding="false"
         android:divider="@android:color/transparent"
         android:dividerHeight="8dp"
@@ -44,14 +45,23 @@
         android:paddingEnd="16dp"
         android:paddingBottom="16dp"
         android:visibility="visible"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/btn_ver_historial"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/user_icon"
         app:layout_constraintVertical_bias="0.0"
-        tools:visibility="visible">
+        tools:visibility="visible"/>
 
-    </ListView>
+    <Button
+        android:id="@+id/btn_ver_historial"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="24dp"
+        android:text="Ver Historial"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/color_view" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
