@@ -9,10 +9,22 @@
     android:padding="16dp"
     tools:context=".ActivityProfile">
 
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="0dp"
+        android:layout_marginEnd="0dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <ImageButton
         android:id="@+id/btnCancelar"
         android:layout_width="48dp"
         android:layout_height="48dp"
+        android:layout_marginTop="48dp"
         android:background="@drawable/icon_go_back"
         android:contentDescription="Cerrar"
         android:padding="8dp"

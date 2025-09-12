@@ -26,6 +26,7 @@ public class FormularioActivity extends AppCompatActivity {
         EditText emocion = findViewById(R.id.editEmocion);
 
         Button cambio = findViewById(R.id.cambio);
+        Button btnOmitirFormulario = findViewById(R.id.btn_omitir_formulario); // Nuevo botón
 
         cambio.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -45,8 +46,17 @@ public class FormularioActivity extends AppCompatActivity {
 
                     startActivity(i);
                 } catch (NullPointerException e) {
+                    // Considerar un Toast o log en lugar de un return silencioso
                     return;
                 }
+            }
+        });
+
+        // Listener para el nuevo botón Omitir
+        btnOmitirFormulario.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish(); // Cierra la actividad actual
             }
         });
 
