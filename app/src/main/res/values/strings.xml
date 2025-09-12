@@ -14,6 +14,7 @@
     <string name="quitar">quitar</string>
     <string name="desc_go_back">Volver</string>
     <string name="usuario">Usuario</string>
+    <string name="descripcion_imagen_preview">Vista previa de la imagen seleccionada</string>
     <string name="welcome_title">Bienvenido</string>
     <string-array name="welcome_messages"> // Lista de mensajes aleatorios de bienvenida
         <item>¡Hola! ¿Qué tal tu día?</item>

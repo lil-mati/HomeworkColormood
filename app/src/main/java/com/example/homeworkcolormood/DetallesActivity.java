@@ -3,6 +3,7 @@ package com.example.homeworkcolormood;
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.drawable.GradientDrawable;
 import android.net.Uri;
@@ -11,6 +12,7 @@ import android.provider.MediaStore;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -35,6 +37,7 @@ public class DetallesActivity extends AppCompatActivity {
 
     // Para saber si tiene foto
     private boolean tieneImagen = false;
+    private ImageView imagePreview; // Variable para la vista previa de la imagen
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +53,7 @@ public class DetallesActivity extends AppCompatActivity {
         Button btnGaleria = findViewById(R.id.btn_galeria);
         Button btnGuardar = findViewById(R.id.btn_guardar);
         TextInputEditText notaEditText = findViewById(R.id.nota);
+        imagePreview = findViewById(R.id.image_preview_detalles); // Inicializar ImageView
 
         // configurar fecha
         Calendar calendar = Calendar.getInstance();
@@ -170,7 +174,8 @@ public class DetallesActivity extends AppCompatActivity {
         if (intent.resolveActivity(getPackageManager()) != null) {
             startActivityForResult(intent, REQUEST_IMAGE_CAPTURE);
         } else {
-
+            // Este bloque try-catch es redundante si resolveActivity es null,
+            // pero se mantiene por si acaso hay alguna configuración extraña del dispositivo.
             try {
                 startActivityForResult(intent, REQUEST_IMAGE_CAPTURE);
             } catch (Exception e) {
@@ -184,7 +189,6 @@ public class DetallesActivity extends AppCompatActivity {
     private void abrirGaleria() {
         String permiso;
 
-        // Para Android 13+ (API 33+) usar el nuevo permiso
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.TIRAMISU) {
             permiso = Manifest.permission.READ_MEDIA_IMAGES;
         } else {
@@ -239,19 +243,50 @@ public class DetallesActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
 
         if (requestCode == REQUEST_IMAGE_CAPTURE) {
-            if (resultCode == RESULT_OK) {
-                tieneImagen = true;
-                Toast.makeText(this, "¡Foto capturada exitosamente!", Toast.LENGTH_SHORT).show();
-            } else {
-                Toast.makeText(this, "Captura cancelada", Toast.LENGTH_SHORT).show();
+            if (resultCode == RESULT_OK && data != null) {
+                Bundle extras = data.getExtras();
+                if (extras != null) {
+                    Bitmap imageBitmap = (Bitmap) extras.get("data");
+                    if (imageBitmap != null) {
+                        imagePreview.setImageBitmap(imageBitmap);
+                        imagePreview.setVisibility(View.VISIBLE);
+                        tieneImagen = true;
+                        Toast.makeText(this, "¡Foto capturada exitosamente!", Toast.LENGTH_SHORT).show();
+                        return; 
+                    }
+                }
+                // Si llegamos aquí, la extracción del bitmap falló
+                imagePreview.setVisibility(View.GONE);
+                imagePreview.setImageBitmap(null);
+                tieneImagen = false;
+                Toast.makeText(this, "Error al obtener la foto.", Toast.LENGTH_SHORT).show();
+
+            } else { // Captura cancelada o fallida (resultCode != RESULT_OK o data es null)
+                imagePreview.setVisibility(View.GONE);
+                imagePreview.setImageBitmap(null);
+                tieneImagen = false;
+                if (resultCode == RESULT_CANCELED) { // Solo mostrar "cancelada" si fue explícitamente cancelada
+                    Toast.makeText(this, "Captura cancelada", Toast.LENGTH_SHORT).show();
+                } else if (data == null && resultCode == RESULT_OK){ // Caso especial: cámara devuelve OK pero data es null (poco común sin EXTRA_OUTPUT)
+                     Toast.makeText(this, "No se recibieron datos de la imagen.", Toast.LENGTH_SHORT).show();
+                }
+                // No mostrar un toast genérico de fallo si ya se mostró "cancelada"
             }
         } else if (requestCode == REQUEST_IMAGE_PICK) {
             if (resultCode == RESULT_OK && data != null && data.getData() != null) {
+                Uri selectedImageUri = data.getData();
+                imagePreview.setImageURI(selectedImageUri);
+                imagePreview.setVisibility(View.VISIBLE);
                 tieneImagen = true;
-                Uri selectedImage = data.getData();
                 Toast.makeText(this, "¡Imagen seleccionada exitosamente!", Toast.LENGTH_SHORT).show();
-            } else {
-                Toast.makeText(this, "Selección cancelada", Toast.LENGTH_SHORT).show();
+            } else { // Selección cancelada o fallida
+                imagePreview.setVisibility(View.GONE);
+                imagePreview.setImageURI(null);
+                tieneImagen = false;
+                 if (resultCode == RESULT_CANCELED) { // Solo mostrar "cancelada" si fue explícitamente cancelada
+                    Toast.makeText(this, "Selección cancelada", Toast.LENGTH_SHORT).show();
+                }
+                // No mostrar un toast genérico de fallo si ya se mostró "cancelada"
             }
         }
     }
