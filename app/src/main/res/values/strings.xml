@@ -13,6 +13,7 @@
     <string name="_00_a_os">00 Años</string>
     <string name="quitar">quitar</string>
     <string name="desc_go_back">Volver</string>
+    <string name="usuario">Usuario</string>
     <string name="welcome_title">Bienvenido</string>
     <string-array name="welcome_messages"> // Lista de mensajes aleatorios de bienvenida
         <item>¡Hola! ¿Qué tal tu día?</item>
