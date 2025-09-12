@@ -11,15 +11,13 @@
 
     <ImageButton
         android:id="@+id/btnCancelar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="?attr/selectableItemBackgroundBorderless"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:background="@drawable/icon_go_back"
         android:contentDescription="Cerrar"
         android:padding="8dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@android:drawable/ic_menu_close_clear_cancel"
-        app:tint="?attr/colorOnSurface" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline_middle"
@@ -53,7 +51,7 @@
         app:layout_constraintBottom_toTopOf="@+id/txtAños"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/imageView3"
+        app:layout_constraintTop_toBottomOf="@id/imgIcon"
         tools:ignore="HardcodedText" />
 
     <TextView

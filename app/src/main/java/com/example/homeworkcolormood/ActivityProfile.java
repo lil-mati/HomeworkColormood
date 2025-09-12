@@ -57,7 +57,7 @@ public class ActivityProfile extends AppCompatActivity {
         if (data != null && resultCode == RESULT_OK) {
             Uri seleccion = data.getData();
             ImageView imagen = findViewById(R.id.imgIcon);
-            ImageView.setImageURI(seleccion);
+            imagen.setImageURI(seleccion);
         }
     }
     private void mostrarCambios() {
