@@ -1,7 +1,9 @@
 package com.example.homeworkcolormood;
 
+import android.Manifest;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -12,6 +14,8 @@ import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
@@ -19,6 +23,7 @@ import androidx.core.view.WindowInsetsCompat;
 public class ActivityProfile extends AppCompatActivity {
 
     public TextView verNombre, verAños, verFav, verEmocion;
+    private static final int REQUEST_PERMISSION = 100;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,16 +55,6 @@ public class ActivityProfile extends AppCompatActivity {
 
         mostrarCambios();
     }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (data != null && resultCode == RESULT_OK) {
-            Uri seleccion = data.getData();
-            ImageView imagen = findViewById(R.id.imgIcon);
-            imagen.setImageURI(seleccion);
-        }
-    }
     private void mostrarCambios() {
         Bundle cambios = this.getIntent().getExtras();
         String nombre = null;
@@ -85,5 +80,14 @@ public class ActivityProfile extends AppCompatActivity {
         verEmocion.setText(emocion);
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (data != null && resultCode == RESULT_OK) {
+            Uri seleccion = data.getData();
+            ImageView imagen = findViewById(R.id.imgIcon);
+            imagen.setImageURI(seleccion);
+        }
+    }
 
 }
