@@ -7,7 +7,7 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView; // Importar TextView
-import android.widget.Toast; // Importar Toast
+// Importar Toast ya no es necesario si se elimina
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
@@ -85,11 +85,8 @@ public class Main_ColorsList_Activity extends AppCompatActivity {
         btnVerHistorial.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Por ahora, solo muestra un Toast. Más adelante, aquí iniciarías la Activity de historial.
-                Toast.makeText(Main_ColorsList_Activity.this, "Próximamente: Historial de registros", Toast.LENGTH_SHORT).show();
-                // Ejemplo de cómo iniciarías la actividad de historial (comentado):
-                // Intent historialIntent = new Intent(Main_ColorsList_Activity.this, HistorialActivity.class); // Reemplaza HistorialActivity.class con el nombre de tu activity
-                // startActivity(historialIntent);
+                Intent historialIntent = new Intent(Main_ColorsList_Activity.this, HistorialActivity.class);
+                startActivity(historialIntent);
             }
         });
     }
