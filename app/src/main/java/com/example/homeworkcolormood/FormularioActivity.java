@@ -24,24 +24,29 @@ public class FormularioActivity extends AppCompatActivity {
         EditText edad = findViewById(R.id.editEdad);
         EditText colorin = findViewById(R.id.editColor);
         EditText emocion = findViewById(R.id.editEmocion);
+
         Button cambio = findViewById(R.id.cambio);
 
         cambio.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String name = nombre.getText().toString();
-                String age = edad.getText().toString();
-                String color = colorin.getText().toString();
-                String emotion = emocion.getText().toString();
+                try {
+                    String name = nombre.getText().toString();
+                    String age = edad.getText().toString();
+                    String color = colorin.getText().toString();
+                    String emotion = emocion.getText().toString();
 
-                Intent i = new Intent(FormularioActivity.this, ActivityProfile.class);
+                    Intent i = new Intent(FormularioActivity.this, ActivityProfile.class);
 
-                i.putExtra("name", name);
-                i.putExtra("age", age);
-                i.putExtra("color", color);
-                i.putExtra("emotion", emotion);
+                    i.putExtra("name", name);
+                    i.putExtra("age", age);
+                    i.putExtra("color", color);
+                    i.putExtra("emotion", emotion);
 
-                startActivity(i);
+                    startActivity(i);
+                } catch (NullPointerException e) {
+                    return;
+                }
             }
         });
 
