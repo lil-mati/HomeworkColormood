@@ -1,4 +1,6 @@
-integrantes: 
-nadia muñoz
-matias mura
-elias elo
+Integrantes: 
+- Nadia Muñoz
+- Matías Mura
+- Elias Elo
+
+Tested on Pixel 7 - API 35
